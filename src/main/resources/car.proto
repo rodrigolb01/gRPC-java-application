@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package proto;
+
+option java_multiple_files = true;
+
+message Car {
+    int32 id = 1;
+    string model_name = 2;
+    string manufacturer = 3;
+    string production_year = 4;
+    string model_year = 5;
+    double price = 6;
+}
+
+message CreateCarRequest {
+    Car car = 1;
+}
+
+message CreateCarResponse {
+    Car car = 1;
+}
+
+message DeleteCarRequest {
+    int32 carId = 1;
+}
+
+message DeleteCarResponse {
+    int32 carId = 1;
+}
+
+message GetCarRequest {
+	int32 carId = 1;
+}
+
+message GetCarResponse {
+    Car car = 1;
+}
+
+message ListCarRequest {
+
+}
+
+message ListCarResponse {
+    repeated Car car = 1;
+}
+
+service CarService {
+    rpc CreateCar(CreateCarRequest) returns (CreateCarResponse);
+    rpc DeleteCar(DeleteCarRequest) returns (DeleteCarResponse);
+    rpc GetCar(GetCarRequest) returns (GetCarResponse);
+    rpc ListCar(ListCarRequest) returns (ListCarResponse);
+}
